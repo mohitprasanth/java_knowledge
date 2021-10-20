@@ -1,0 +1,56 @@
+<!--
+Eventhough you exclude few packages they still appear in target folder / jar
+because if the packages that are not excluded are using these excluded package classes
+then it will still include them in jar.
+
+^^ same applied for inverse of include.
+-->
+
+<!-- ALL PACKAGES YOU WANT TO EXCLUDE -->
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/com/company/config/**</exclude>
+                        <exclude>**/com/company/temppackage/**</exclude>
+                        <exclude>**/com/company/controller/**</exclude>
+                        <exclude>**/com/company/jometer/**</exclude>
+                        <exclude>**/com/company/kafkaretrial/**</exclude>
+                        <exclude>**/com/company/listener/**</exclude>
+                        <exclude>**/com/company/model/**</exclude>
+                        <exclude>**/com/company/repository/**</exclude>
+                        <exclude>**/com/company/seek/**</exclude>
+                        <exclude>**/com/company/sink/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+</build>
+
+
+<!-- ALL PACKAGES YOU WANT TO INCLUDE -->
+<build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/com/joveo/ingestion/refactor/**</include>
+                        <include>**/com/joveo/ingestion/Enricher.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+</build>
